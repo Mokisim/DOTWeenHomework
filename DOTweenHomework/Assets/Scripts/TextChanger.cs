@@ -8,12 +8,16 @@ public class TextChanger : MonoBehaviour
 {
     [SerializeField] private Text _text;
 
+    private int _replaceAnimationDuration = 3;
+    private int _supplementAnimationDuration = 4;
+    private int _hackAnimationDuration = 5;
+
     void Start()
     {
         Sequence sequence = DOTween.Sequence();
 
-        sequence.Append(_text.DOText("Заменил текст, что дальше?", 3));
-        sequence.Append(_text.DOText("Дополнил текст, продолжим?", 4).SetRelative());
-        sequence.Append(_text.DOText("Ты взломан :(", 5, true, ScrambleMode.All));
+        sequence.Append(_text.DOText("Заменил текст, что дальше?", _replaceAnimationDuration));
+        sequence.Append(_text.DOText("Дополнил текст, продолжим?", _supplementAnimationDuration).SetRelative());
+        sequence.Append(_text.DOText("Ты взломан :(", _hackAnimationDuration, true, ScrambleMode.All));
     }
 }
