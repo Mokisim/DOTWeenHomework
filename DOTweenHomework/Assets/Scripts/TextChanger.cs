@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
@@ -12,12 +10,14 @@ public class TextChanger : MonoBehaviour
     private int _supplementAnimationDuration = 4;
     private int _hackAnimationDuration = 5;
 
+    private Sequence _sequence;
+
     void Start()
     {
-        Sequence sequence = DOTween.Sequence();
+        _sequence = DOTween.Sequence();
 
-        sequence.Append(_text.DOText("Заменил текст, что дальше?", _replaceAnimationDuration));
-        sequence.Append(_text.DOText("Дополнил текст, продолжим?", _supplementAnimationDuration).SetRelative());
-        sequence.Append(_text.DOText("Ты взломан :(", _hackAnimationDuration, true, ScrambleMode.All));
+        _sequence.Append(_text.DOText("Заменил текст, что дальше?", _replaceAnimationDuration));
+        _sequence.Append(_text.DOText("Дополнил текст, продолжим?", _supplementAnimationDuration).SetRelative());
+        _sequence.Append(_text.DOText("Ты взломан :(", _hackAnimationDuration, true, ScrambleMode.All));
     }
 }
